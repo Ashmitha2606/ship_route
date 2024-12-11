@@ -1,0 +1,105 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    height: 100%;
+    background-image: url('abb-routing-services.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.welcome-text {
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1e3a5f; /* Deep Navy Blue */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+p {
+    font-size: 1.3rem;
+    color: #80ced7; /* Sky Blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+    margin-bottom: 30px;
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 1s; /* Delay for sequential appearance */
+}
+
+.additional-text {
+    font-size: 1.2rem;
+    color: #ffcc00; /* Goldish Yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Shadow for readability */
+    margin-top: 20px;
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 2s; /* Appear after welcome text */
+}
+
+.left-options {
+    position: absolute;
+    top: 20px;
+    right: 30px; /* Align buttons to the top-right corner */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+}
+
+button {
+    background-color: #00bfff; /* Aqua Blue */
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #1e90ff; /* Darker Aqua Blue on hover */
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
