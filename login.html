@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - AquaNexis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="main.css" />
+
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+    <form>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+      <button type="button" onclick="login()">Login</button>
+    </form>
+  </header>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Check for Admin credentials
+      if (email === 'yenimireddyashmitha@gmail.com' && password === '1234') {
+        alert('Welcome Admin! Redirecting to Admin Dashboard...');
+        window.location.href = 'index.html'; // Redirect to the Admin Dashboard
+      } else {
+        // Assume user is a Passenger if credentials do not match Admin
+        alert('Welcome Passenger! Redirecting to Booking page...');
+        window.location.href = 'passenger-booking.html'; // Redirect to Passenger Booking Page
+      }
+    }
+  </script>
+</body>
+</html>

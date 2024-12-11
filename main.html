@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMask Integration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>MetaMask Connection</h1>
+  <button id="connectButton">Connect to MetaMask</button>
+  <div id="status"></div>
+
+  <!-- Include Web3.js -->
+  <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+  <script>
+    let web3;
+    let isRequestPending = false;
+
+    // Function to initialize and connect to MetaMask
+    async function connectMetaMask() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          if (isRequestPending) {
+            document.getElementById('status').innerText = "Please wait, a request is already in progress.";
+            return;
+          }
+          isRequestPending = true;
+
+          // Initialize Web3
+          web3 = new Web3(window.ethereum);
+
+          // Request account access
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
+          // Log the connected account
+          console.log('Connected account:', accounts[0]);
+          document.getElementById('status').innerText = `MetaMask connected successfully! Account: ${accounts[0]}`;
+
+          // Redirect to Passenger Booking page after successful connection
+          setTimeout(() => {
+            window.location.href = 'passenger-booking.html'; // Replace with your actual booking page URL
+          }, 2000); // Delay for better user experience
+        } catch (error) {
+          console.error('MetaMask connection failed:', error);
+          document.getElementById('status').innerText = `MetaMask connection failed: ${error.message}`;
+        } finally {
+          isRequestPending = false; // Reset the flag when done
+        }
+      } else {
+        document.getElementById('status').innerText = "MetaMask is not installed! Please install MetaMask and try again.";
+      }
+    }
+
+    // Event listener for the connect button
+    document.getElementById('connectButton').addEventListener('click', connectMetaMask);
+  </script>
+</body>
+</html>

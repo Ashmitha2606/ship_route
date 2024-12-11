@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMask NFT Minting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mint NFT</h1>
+  <button id="connectButton">Connect to MetaMask</button>
+  <button id="mintButton" style="display:none;">Mint NFT</button>
+  <div id="status"></div>
+
+  <!-- Include Web3.js -->
+  <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+  <script>
+    let web3;
+    const contractAddress = "0x3da05f6f15bac66a38b59c75cbb94aff9d7ea0ac"; // Replace with your contract address
+    const abi = [
+      // Add the ABI of your contract here
+      {
+        "inputs": [],
+        "name": "mintNFT",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+
+    // Connect to MetaMask
+    async function connectMetaMask() {
+      if (typeof window.ethereum !== 'undefined') {
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        web3 = new Web3(window.ethereum);
+        document.getElementById('status').innerText = "MetaMask connected!";
+        document.getElementById('mintButton').style.display = 'block';
+      } else {
+        document.getElementById('status').innerText = "MetaMask is not installed!";
+      }
+    }
+
+    // Mint the NFT
+    async function mintNFT() {
+      const accounts = await web3.eth.getAccounts();
+      const account = accounts[0];
+      const contract = new web3.eth.Contract(abi, contractAddress);
+      
+      try {
+        await contract.methods.mintNFT(account).send({ from: account });
+        alert("NFT Minted!");
+        document.getElementById('status').innerText = `NFT Minted for ${account}!`;
+      } catch (error) {
+        console.error(error);
+        alert("Error minting NFT");
+      }
+    }
+
+    // Event listeners
+    document.getElementById('connectButton').addEventListener('click', connectMetaMask);
+    document.getElementById('mintButton').addEventListener('click', mintNFT);
+  </script>
+</body>
+</html>

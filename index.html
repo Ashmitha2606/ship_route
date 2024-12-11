@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaNexis - Ship Route Optimization</title>
+  <link rel="stylesheet" href="style.css" />
+ 
+  <!-- Leaflet CSS for OpenStreetMap -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">AquaNexis</div>
+    <ul>
+      <li><a href="#map"><i class="fas fa-map icon"></i> Map</a></li>
+      <li><a href="#dashboard"><i class="fas fa-tachometer-alt icon"></i> Fuel Dashboard</a></li>
+      <li><a href="#selector"><i class="fas fa-route icon"></i> Route Selector</a></li>
+      <li><a href="#weather"><i class="fas fa-cloud-sun icon"></i> Weather</a></li>
+      <li><a href="#about"><i class="fas fa-info-circle icon"></i> About Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Welcome to AquaNexis</h1>
+      <p>Optimize your shipping routes with fuel efficiency and real-time weather data.</p>
+      <a href="#map" class="btn">Start Exploring</a>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <section id="main-content">
+    <!-- Map Section -->
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+
+    <!-- Info Panel Section -->
+    <div id="info-panel">
+      <!-- Fuel Dashboard Section -->
+      <section id="dashboard">
+        <h2><i class="fas fa-tachometer-alt icon"></i> Fuel Dashboard</h2>
+        <div class="card" id="fuel-info">
+          <p><strong>Fuel Consumption:</strong> 2500 L</p>
+          <p><strong>Fuel Efficiency:</strong> 8.5 L/Nautical Mile</p>
+          <p><strong>Estimated Travel Time:</strong> 72 hours</p>
+        </div>
+      </section>
+      
+      <!-- Route Selector Section -->
+      <section id="selector">
+        <h2><i class="fas fa-route icon"></i> Select Your Route</h2>
+        <p>Choose the best route for optimal fuel efficiency and travel time.</p>
+        <select id="route-selector">
+          <option value="mumbai-mombasa">Mumbai to Mombasa</option>
+          <option value="chennai-durban">Chennai to Durban</option>
+          <option value="kochi-colombo">Kochi to Colombo</option>
+          <option value="mumbai-muscat">Mumbai to Muscat</option>
+          <option value="mumbai-singapore">Mumbai to Singapore</option>
+          <option value="mumbai-durban">Mumbai to Durban</option>
+        
+
+        </select>
+      </section>
+      
+      <!-- Weather Section -->
+      <section id="weather">
+        <h2><i class="fas fa-cloud-sun icon"></i> Current Weather Information</h2>
+        <div id="weather-info">Loading weather data...</div>
+      </section>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about">
+    <h2>About AquaNexis</h2>
+    <p>
+      AquaNexis is a leading maritime route optimization platform that
+      integrates real-time weather data and fuel efficiency algorithms to
+      provide you with the safest and most efficient routes across the Indian
+      Ocean and beyond. Whether you are shipping goods or navigating vessels,
+      we help you save fuel and time while ensuring a smooth journey.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 AquaNexis. All Rights Reserved. | Contact: info@aquanexis.com</p>
+  </footer>
+
+  <!-- Ship Icon -->
+
+  <!-- Leaflet JS for OpenStreetMap -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <!-- Your custom script -->
+  <script src="script.js"></script>
+  
+</body>
+</html>
